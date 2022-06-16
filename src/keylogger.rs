@@ -29,8 +29,6 @@ pub fn run(path: String) {
 
                 let s = format!("{:?}", keys[0]).to_lowercase();
 
-                debug!("{}", s);
-
                 // remap to german
                 let s: &str = match keys[0] {
                     Keycode::Z => "y",
@@ -52,7 +50,7 @@ pub fn run(path: String) {
 
                 let s0 = format!("{:?}", keys[0]).to_lowercase();
                 let s1 = format!("{:?}", keys[1]).to_lowercase();
-                info!("s0: {}, s1: {}", s0, s1);
+                debug!("s0: {}, s1: {}", s0, s1);
 
                 if &s1 == "lshift" {
                     let s = match keys[0] {
@@ -74,7 +72,7 @@ pub fn run(path: String) {
                         Keycode::Apostrophe => "",
                         _ => &s0,
                     };
-                    println!("remapped: {}", s);
+                    info!("writing: {}", s);
                     write!(file, "{}", s).expect("Failed to write to file");
                 }
                 if &s0 == "lshift" {
@@ -85,7 +83,7 @@ pub fn run(path: String) {
                         Keycode::BackSlash => "'",
                         _ => &s1,
                     };
-                    println!("remapped: {}", s);
+                    info!("writing {}", s);
                     write!(file, "{}", s).expect("Failed to write to file");
                 }
             }
