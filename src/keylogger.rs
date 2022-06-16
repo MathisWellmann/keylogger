@@ -38,17 +38,16 @@ pub fn run(path: String) {
     loop {
         let keys = device_state.get_keys();
         if keys != prev_keys && !keys.is_empty() {
-            // Filter out unwanted single keys
-            if keys.len() == 1 {
-                if filter_keys.contains(&format!("{:?}", keys[0])) {
+            for k in keys.iter() {
+                // Filter out unwanted single keys
+                if filter_keys.contains(&format!("{:?}", k)) {
                     continue;
                 }
+                let s = format!("{:?}", k);
+                println!("{}", s);
+
+                writeln!(file, "{}", s).expect("Failed to write to file");
             }
-
-            let s = format!("{:?}", keys);
-            println!("{}", s);
-
-            writeln!(file, "{}", s).expect("Failed to write to file");
         }
         prev_keys = keys;
     }
