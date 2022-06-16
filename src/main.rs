@@ -23,6 +23,7 @@
 //! ```
 use clap::{App, Arg};
 
+mod constants;
 mod keylogger;
 
 fn main() {
