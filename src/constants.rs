@@ -1,5 +1,5 @@
 // List of keys to ignore
-pub(crate) const FILTER_KEYS: [&str; 55] = [
+pub(crate) const FILTER_KEYS: [&str; 56] = [
     "Space",
     "Enter",
     "Backspace",
@@ -55,4 +55,5 @@ pub(crate) const FILTER_KEYS: [&str; 55] = [
     "Semicolon",
     "LeftBracket",
     "Grave",
+    "CapsLock",
 ];

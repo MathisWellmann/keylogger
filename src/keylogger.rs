@@ -27,7 +27,7 @@ pub fn run(path: String) {
                     continue;
                 }
 
-                let s = format!("{:?}", keys[0]);
+                let s = format!("{:?}", keys[0]).to_lowercase();
 
                 println!("{}", s);
 
@@ -47,8 +47,10 @@ pub fn run(path: String) {
                 println!("remapped {}", s);
 
                 write!(file, "{}", s).expect("Failed to write to file");
-            } else {
-                // TODO: Handle multi key info
+            } else if keys.len() == 2 {
+                // TODO: Handle dual key info
+
+                println!("{:?}", keys);
             }
         }
         prev_keys = keys;
