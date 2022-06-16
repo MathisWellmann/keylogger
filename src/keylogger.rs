@@ -1,4 +1,4 @@
-use device_query::{DeviceQuery, DeviceState};
+use device_query::{DeviceQuery, DeviceState, Keycode};
 use std::fs::OpenOptions;
 use std::io::Write;
 
@@ -33,13 +33,15 @@ pub fn run(path: String) {
 
                 // remap to german
                 let s: &str = match keys[0] {
-                    device_query::Keycode::Minus => "ß",
-                    device_query::Keycode::Equal => "´",
-                    device_query::Keycode::RightBracket => "+",
-                    device_query::Keycode::BackSlash => "#",
-                    device_query::Keycode::Comma => ",",
-                    device_query::Keycode::Dot => ".",
-                    device_query::Keycode::Slash => "-",
+                    Keycode::Z => "Y",
+                    Keycode::Y => "Z",
+                    Keycode::Minus => "ß",
+                    Keycode::Equal => "´",
+                    Keycode::RightBracket => "+",
+                    Keycode::BackSlash => "#",
+                    Keycode::Comma => ",",
+                    Keycode::Dot => ".",
+                    Keycode::Slash => "-",
                     _ => &s,
                 };
                 println!("remapped {}", s);
