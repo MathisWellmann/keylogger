@@ -1,6 +1,6 @@
 [package]
 name = "keylogger"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["DEADBLACKCLOVER <deadblackclover@protonmail.com>"]
 description = "Register various user actions - keystrokes on the computer keyboard, movements and mouse keystrokes"
 edition = "2018"
@@ -13,9 +13,8 @@ keywords = ["keylogger", "keyboard", "mouse"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-chrono = "0.4.13"
-clap = "2.33.0"
-device_query = "0.2.4"
+clap = "^2.33.0"
+device_query = "^0.2"
 
 [package.metadata.deb]
 maintainer = "DEADBLACKCLOVER <deadblackclover@protonmail.com>"
