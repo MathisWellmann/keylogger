@@ -1,5 +1,6 @@
 // List of keys to ignore
-pub(crate) const FILTER_KEYS: [&str; 40] = [
+pub(crate) const FILTER_KEYS: [&str; 55] = [
+    "Space",
     "Enter",
     "Backspace",
     "LShift",
@@ -26,6 +27,16 @@ pub(crate) const FILTER_KEYS: [&str; 40] = [
     "F10",
     "F11",
     "F12",
+    "Key0",
+    "Key1",
+    "Key2",
+    "Key3",
+    "Key4",
+    "Key5",
+    "Key6",
+    "Key7",
+    "Key8",
+    "Key9",
     "Numpad0",
     "Numpad1",
     "Numpad2",
@@ -40,4 +51,8 @@ pub(crate) const FILTER_KEYS: [&str; 40] = [
     "NumpadSubtract",
     "NumpadMultiply",
     "NumpadDivide",
+    "Apostrophe",
+    "Semicolon",
+    "LeftBracket",
+    "Grave",
 ];
