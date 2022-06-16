@@ -21,12 +21,18 @@
 //! ARGS:
 //!     <PATH>    File path
 //! ```
+
+#[macro_use]
+extern crate log;
+
 use clap::{App, Arg};
 
 mod constants;
 mod keylogger;
 
 fn main() {
+    pretty_env_logger::init();
+
     let matches = App::new("keylogger")
         .version("0.1.0")
         .author("DEADBLACKCLOVER <deadblackclover@protonmail.com>")

@@ -1,6 +1,6 @@
 [package]
 name = "keylogger"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["DEADBLACKCLOVER <deadblackclover@protonmail.com>"]
 description = "Register various user actions - keystrokes on the computer keyboard, movements and mouse keystrokes"
 edition = "2018"
@@ -15,6 +15,8 @@ keywords = ["keylogger", "keyboard", "mouse"]
 [dependencies]
 clap = "^2.33.0"
 device_query = "^0.2"
+log = "^0.4"
+pretty_env_logger = "^0.4"
 
 [package.metadata.deb]
 maintainer = "DEADBLACKCLOVER <deadblackclover@protonmail.com>"

@@ -29,12 +29,12 @@ pub fn run(path: String) {
 
                 let s = format!("{:?}", keys[0]).to_lowercase();
 
-                println!("{}", s);
+                debug!("{}", s);
 
                 // remap to german
                 let s: &str = match keys[0] {
-                    Keycode::Z => "Y",
-                    Keycode::Y => "Z",
+                    Keycode::Z => "y",
+                    Keycode::Y => "z",
                     Keycode::Minus => "ß",
                     Keycode::Equal => "´",
                     Keycode::RightBracket => "+",
@@ -44,13 +44,50 @@ pub fn run(path: String) {
                     Keycode::Slash => "-",
                     _ => &s,
                 };
-                println!("remapped {}", s);
+                info!("writing {}", s);
 
                 write!(file, "{}", s).expect("Failed to write to file");
             } else if keys.len() == 2 {
-                // TODO: Handle dual key info
+                // Handle dual key info
 
-                println!("{:?}", keys);
+                let s0 = format!("{:?}", keys[0]).to_lowercase();
+                let s1 = format!("{:?}", keys[1]).to_lowercase();
+                info!("s0: {}, s1: {}", s0, s1);
+
+                if &s1 == "lshift" {
+                    let s = match keys[0] {
+                        Keycode::Key0 => "=",
+                        Keycode::Key1 => "!",
+                        Keycode::Key2 => "\"",
+                        Keycode::Key3 => "§",
+                        Keycode::Key4 => "$",
+                        Keycode::Key5 => "%",
+                        Keycode::Key6 => "&",
+                        Keycode::Key7 => "/",
+                        Keycode::Key8 => "(",
+                        Keycode::Key9 => ")",
+                        Keycode::Minus => "?",
+                        Keycode::RightBracket => "*",
+                        Keycode::LeftBracket => "",
+                        Keycode::Equal => "`",
+                        Keycode::Semicolon => "",
+                        Keycode::Apostrophe => "",
+                        _ => &s0,
+                    };
+                    println!("remapped: {}", s);
+                    write!(file, "{}", s).expect("Failed to write to file");
+                }
+                if &s0 == "lshift" {
+                    let s = match keys[1] {
+                        Keycode::Comma => ";",
+                        Keycode::Dot => ":",
+                        Keycode::Slash => "_",
+                        Keycode::BackSlash => "'",
+                        _ => &s1,
+                    };
+                    println!("remapped: {}", s);
+                    write!(file, "{}", s).expect("Failed to write to file");
+                }
             }
         }
         prev_keys = keys;
