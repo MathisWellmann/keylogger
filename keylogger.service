@@ -2,7 +2,7 @@
 Description=keylogger
 
 [Service]
-ExecStart=/usr/bin "/home/magewe/.keylogger"
+ExecStart=/usr/bin/keylogger "/home/magewe/.keylogger"
 
 [Install]
 WantedBy=multi-user.target
